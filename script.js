@@ -85,27 +85,57 @@
 
 // ! Create Slick SVG Animations
 
-let initPath = "M 10 100 Q 500 100 990 100";
-let finalPath = "M 10 100 Q 500 100 990 100";
+// let initPath = "M 10 100 Q 500 100 990 100";
+// let finalPath = "M 10 100 Q 500 100 990 100";
 
-let string = document.querySelector("#string");
-string.addEventListener("mousemove", function (dets) {
-  initPath = `M 10 100 Q ${dets.x} ${dets.y} 990 100`;
-  gsap.to("svg path", {
-    attr: {
-      d: initPath,
-    },
-    duration: 0.2,
-    ease: "power3.out",
-    // stagger: 1,
+// let string = document.querySelector("#string");
+// string.addEventListener("mousemove", function (dets) {
+//   initPath = `M 10 100 Q ${dets.x} ${dets.y} 990 100`;
+//   gsap.to("svg path", {
+//     attr: {
+//       d: initPath,
+//     },
+//     duration: 0.2,
+//     ease: "power3.out",
+//     // stagger: 1,
+//   });
+// });
+// string.addEventListener("mouseleave", function () {
+//   gsap.to("svg path", {
+//     attr: {
+//       d: finalPath,
+//     },
+//     duration: 0.8,
+//     ease: "elastic.out(1,0.1)",
+//   });
+// });
+
+// ! Create cursor Animations
+
+let main = document.querySelector("#main");
+let cursor = document.querySelector("#cursor");
+let imageDiv = document.querySelector("#img");
+
+main.addEventListener("mousemove", function (dets) {
+  gsap.to(cursor, {
+    x: dets.x,
+    y: dets.y,
+    duration: 1,
   });
 });
-string.addEventListener("mouseleave", function () {
-  gsap.to("svg path", {
-    attr: {
-      d: finalPath,
-    },
-    duration: 0.8,
-    ease: "elastic.out(1,0.1)",
+
+imageDiv.addEventListener("mouseenter", function () {
+  cursor.innerHTML = "View More";
+  gsap.to(cursor, {
+    scale: 4,
+    backgroundColor: "gray",
+  });
+});
+imageDiv.addEventListener("mouseleave", function () {
+  cursor.innerHTML = "";
+
+  gsap.to(cursor, {
+    scale: 1,
+    backgroundColor: "black",
   });
 });
