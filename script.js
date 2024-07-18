@@ -112,30 +112,60 @@
 
 // ! Create cursor Animations
 
-let main = document.querySelector("#main");
-let cursor = document.querySelector("#cursor");
-let imageDiv = document.querySelector("#img");
+// let main = document.querySelector("#main");
+// let cursor = document.querySelector("#cursor");
+// let imageDiv = document.querySelector("#img");
 
-main.addEventListener("mousemove", function (dets) {
-  gsap.to(cursor, {
-    x: dets.x,
-    y: dets.y,
-    duration: 1,
-  });
+// main.addEventListener("mousemove", function (dets) {
+//   gsap.to(cursor, {
+//     x: dets.x,
+//     y: dets.y,
+//     duration: 1,
+//   });
+// });
+
+// imageDiv.addEventListener("mouseenter", function () {
+//   cursor.innerHTML = "View More";
+//   gsap.to(cursor, {
+//     scale: 4,
+//     backgroundColor: "gray",
+//   });
+// });
+// imageDiv.addEventListener("mouseleave", function () {
+//   cursor.innerHTML = "";
+
+//   gsap.to(cursor, {
+//     scale: 1,
+//     backgroundColor: "black",
+//   });
+// });
+
+// ! Create TimeLine Animation
+
+let menu = document.querySelector("nav i");
+let close = document.querySelector("#full i");
+
+let tl = gsap.timeline();
+tl.to("#full", {
+  right: 0,
+  duration: 0.5,
 });
 
-imageDiv.addEventListener("mouseenter", function () {
-  cursor.innerHTML = "View More";
-  gsap.to(cursor, {
-    scale: 4,
-    backgroundColor: "gray",
-  });
+tl.from("#full a", {
+  x: 150,
+  duration: 0.6,
+  stagger: 0.2,
+  opacity: 0,
 });
-imageDiv.addEventListener("mouseleave", function () {
-  cursor.innerHTML = "";
+tl.from("#full i", {
+  opacity: 0,
+});
 
-  gsap.to(cursor, {
-    scale: 1,
-    backgroundColor: "black",
-  });
+tl.pause();
+
+menu.addEventListener("click", function () {
+  tl.play();
+});
+close.addEventListener("click", function () {
+  tl.reverse();
 });
