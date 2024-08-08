@@ -142,30 +142,67 @@
 
 // ! Create TimeLine Animation
 
-let menu = document.querySelector("nav i");
-let close = document.querySelector("#full i");
+// let menu = document.querySelector("nav i");
+// let close = document.querySelector("#full i");
 
-let tl = gsap.timeline();
-tl.to("#full", {
-  right: 0,
-  duration: 0.5,
-});
+// let tl = gsap.timeline();
+// tl.to("#full", {
+//   right: 0,
+//   duration: 0.5,
+// });
 
-tl.from("#full a", {
-  x: 150,
+// tl.from("#full a", {
+//   x: 150,
+//   duration: 0.6,
+//   stagger: 0.2,
+//   opacity: 0,
+// });
+// tl.from("#full i", {
+//   opacity: 0,
+// });
+
+// tl.pause();
+
+// menu.addEventListener("click", function () {
+//   tl.play();
+// });
+// close.addEventListener("click", function () {
+//   tl.reverse();
+// });
+
+// ! Create text Animation
+
+function breakTheText() {
+  var h1 = document.querySelector("h1");
+  var h1text = h1.textContent;
+  var splittedText = h1text.split("");
+  var clutter = "";
+  var halfValue = splittedText.length / 2;
+
+  splittedText.forEach(function (elem, idx) {
+    if (idx < halfValue) {
+      clutter += `<span  class="a">${elem}</span>`;
+    } else {
+      clutter += `<span class="b" >${elem}</span>`;
+    }
+  });
+
+  h1.innerHTML = clutter;
+}
+
+breakTheText();
+
+gsap.from("h1 span.a", {
+  y: 80,
   duration: 0.6,
-  stagger: 0.2,
+  delay: 0.5,
   opacity: 0,
+  stagger: 0.15,
 });
-tl.from("#full i", {
+gsap.from("h1 span.b", {
+  y: 80,
+  duration: 0.6,
+  delay: 0.5,
   opacity: 0,
-});
-
-tl.pause();
-
-menu.addEventListener("click", function () {
-  tl.play();
-});
-close.addEventListener("click", function () {
-  tl.reverse();
+  stagger: -0.15,
 });

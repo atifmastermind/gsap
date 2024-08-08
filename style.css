@@ -11,8 +11,10 @@ html {
 }
 
 body {
-  overflow-x: hidden;
   background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* .page {
@@ -112,7 +114,7 @@ body {
   z-index: 10;
 } */
 
-#main {
+/* #main {
   height: 100%;
   width: 100%;
   background-image: url("https://images.unsplash.com/photo-1713766056305-d33bb4d71e1f?q=80&w=1515&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
@@ -168,4 +170,13 @@ nav i {
   font-weight: 600;
   font-size: 25px;
   cursor: pointer;
+} */
+
+h1 {
+  color: white;
+  font-size: 100px;
+  overflow: hidden;
+}
+h1 span {
+  display: inline-block;
 }
